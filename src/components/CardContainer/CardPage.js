@@ -3,11 +3,13 @@ import React from "react";
 const CardPage = (props) => {
     return (
         <div className="container">
-            {props.title}
-            <h2>{props.date}</h2>
+            <div className="heading">
+                <h2>{props.title}</h2>
+                <h3>{props.date}</h3>
+            </div>
             <img src={props.url} alt="nasa" className='image' />
             <div className="description">
-                {props.description}
+                <p>{props.description}</p>
             </div>
         </div>
     )
