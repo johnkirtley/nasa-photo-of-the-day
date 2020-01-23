@@ -5,11 +5,9 @@ import axios from "axios";
 export default function ImageList() {
     const [images, setImages] = useState([]);
 
-
-
     useEffect(() => {
         axios
-            .get("https://api.nasa.gov/planetary/apod?api_key=DmCR5nVfoXyDYmhE5zgdZaUMwJkcmvt64q5Pte48&date=2020-1-5")
+            .get(`https://api.nasa.gov/planetary/apod?api_key=DmCR5nVfoXyDYmhE5zgdZaUMwJkcmvt64q5Pte48&date=2015-2-${day()}`)
             .then(res => {
                 setImages(res.data);
             })
@@ -17,6 +15,13 @@ export default function ImageList() {
                 console.log(err);
             })
     }, []);
+
+    const day = () => {
+        let num = Math.round((Math.random() * 30));
+        if (num === 0) { num = 1 };
+        console.log(num)
+        return num;
+    }
 
 
     return (
@@ -27,6 +32,7 @@ export default function ImageList() {
                 date={images.date}
                 url={images.hdurl}
                 description={images.explanation}
+                day={day}
             />
 
         </>
