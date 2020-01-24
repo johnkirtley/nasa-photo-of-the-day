@@ -4,37 +4,39 @@ import axios from "axios";
 
 export default function ImageList() {
     const [images, setImages] = useState([]);
+    const [day, setDay] = useState()
+
+    const ChangeDay = () => {
+        let num = Math.round((Math.random() * 30));
+        if (num === 0) { num = 1 };
+        setDay(num);
+        return num;
+    }
 
     useEffect(() => {
         axios
-            .get(`https://api.nasa.gov/planetary/apod?api_key=DmCR5nVfoXyDYmhE5zgdZaUMwJkcmvt64q5Pte48&date=2015-2-${day()}`)
+            .get(`https://api.nasa.gov/planetary/apod?api_key=DmCR5nVfoXyDYmhE5zgdZaUMwJkcmvt64q5Pte48&date=2019-4-${day || 1}`)
             .then(res => {
                 setImages(res.data);
             })
             .catch(err => {
                 console.log(err);
             })
-    }, []);
+    }, [day]);
 
-    const day = () => {
-        let num = Math.round((Math.random() * 30));
-        if (num === 0) { num = 1 };
-        console.log(num)
-        return num;
-    }
+
 
 
     return (
         <>
-
             <CardPage
                 title={images.title}
                 date={images.date}
                 url={images.hdurl}
                 description={images.explanation}
-                day={day}
+                day={ChangeDay}
             />
-
+            />
         </>
     );
 
