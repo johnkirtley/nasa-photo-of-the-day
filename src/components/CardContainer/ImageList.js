@@ -15,7 +15,6 @@ export default function ImageList() {
         setDay(date.value);
     }
 
-
     useEffect(() => {
         axios
             .get(`https://api.nasa.gov/planetary/apod?api_key=DmCR5nVfoXyDYmhE5zgdZaUMwJkcmvt64q5Pte48&date=${day || defaultDate}`)

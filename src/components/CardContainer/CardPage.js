@@ -9,13 +9,16 @@ justify-content: center;
 align-items: center;
 flex-flow: column;
 background-color: #3F3F37;
-
 `
 
 const StyledHeading = styled.div`
 padding: 3% 0;
 font-size: 1.9rem;
 text-align: center;
+display:flex;
+flex-flow: column;
+justify-content: center;
+align-items: center;
 `
 
 const Title = styled.h2`
@@ -42,9 +45,10 @@ const InfoContainer = styled.div`
 display: flex;
 flex-flow: column;
 `
-
-
-
+const Input = styled.input`
+border-radius: 10px;
+margin: 5% 0;
+`
 
 const CardPage = (props) => {
     return (
@@ -52,14 +56,15 @@ const CardPage = (props) => {
             <StyledHeading>
                 <Title>{props.title}</Title>
                 <h3>{props.date}</h3>
-                <input type="date" id="datepicker" />
-                <Button color="primary" onClick={props.day} className="pictureButton">Click to change image</Button>
+                <p>Please Select a Date Below:</p>
+                <Input type="date" id="datepicker" />
+                <Button color="danger" size="lg" onClick={props.day} className="pictureButton">Submit</Button>
             </StyledHeading>
             <InfoContainer>
                 <StyledImage src={props.url} alt="nasa" className='image' />
                 <Description>{props.description}</Description>
             </InfoContainer>
-        </StyledDiv>
+        </StyledDiv >
     )
 }
 
