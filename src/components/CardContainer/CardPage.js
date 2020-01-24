@@ -44,12 +44,15 @@ flex-flow: column;
 `
 
 
+
+
 const CardPage = (props) => {
     return (
         <StyledDiv>
             <StyledHeading>
                 <Title>{props.title}</Title>
                 <h3>{props.date}</h3>
+                <input type="date" id="datepicker" />
                 <Button color="primary" onClick={props.day} className="pictureButton">Click to change image</Button>
             </StyledHeading>
             <InfoContainer>

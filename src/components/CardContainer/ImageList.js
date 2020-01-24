@@ -6,23 +6,26 @@ export default function ImageList() {
     const [images, setImages] = useState([]);
     const [day, setDay] = useState()
 
-    const ChangeDay = () => {
-        let num = Math.round((Math.random() * 30));
-        if (num === 0) { num = 1 };
-        setDay(num);
-        return num;
+    const dt = new Date();
+    const defaultDate = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
+
+
+    const ChangeDate = () => {
+        const date = document.querySelector('#datepicker');
+        setDay(date.value);
     }
+
 
     useEffect(() => {
         axios
-            .get(`https://api.nasa.gov/planetary/apod?api_key=DmCR5nVfoXyDYmhE5zgdZaUMwJkcmvt64q5Pte48&date=2019-4-${day || 1}`)
+            .get(`https://api.nasa.gov/planetary/apod?api_key=DmCR5nVfoXyDYmhE5zgdZaUMwJkcmvt64q5Pte48&date=${day || defaultDate}`)
             .then(res => {
                 setImages(res.data);
             })
             .catch(err => {
                 console.log(err);
             })
-    }, [day]);
+    }, [day, defaultDate]);
 
 
 
@@ -34,7 +37,7 @@ export default function ImageList() {
                 date={images.date}
                 url={images.hdurl}
                 description={images.explanation}
-                day={ChangeDay}
+                day={ChangeDate}
             />
             />
         </>
