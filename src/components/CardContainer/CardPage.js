@@ -58,7 +58,7 @@ const CardPage = (props) => {
                 <h3>{props.date}</h3>
                 <p>Please Select a Date Below:</p>
                 <Input type="date" id="datepicker" />
-                <Button color="danger" size="lg" onClick={props.day} className="pictureButton">Submit</Button>
+                <Button color="danger" size="lg" onClick={props.day} className="pictureButton">Submit date</Button>
             </StyledHeading>
             <InfoContainer>
                 <StyledImage src={props.url} alt="nasa" className='image' />
