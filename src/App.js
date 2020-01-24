@@ -1,13 +1,15 @@
 import React from "react";
 import "./App.css";
+import ImageList from "./components/CardContainer/ImageList";
 
 function App() {
+
   return (
-    <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
-      </p>
+    <div className="photo-container">
+      <h1>NASA Photo of the Day</h1>
+      <div className="images">
+        <ImageList />
+      </div>
     </div>
   );
 }
